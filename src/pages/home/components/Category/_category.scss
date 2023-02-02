@@ -1,0 +1,112 @@
+.categories_overview {
+    background-color: #2e3348;
+    position: relative;
+    .categories_item {
+        position: relative;
+        height: 640px;
+        color: #ffffff;
+        .line_1 {
+            border: 1px double #b5b7bf;
+            width: 300px;
+            height: 300px;
+            transform: translate(-50%, -50%) rotate(45deg);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+        }
+        .line_2 {
+            border: 1px double #b5b7bf;
+            width: 285px;
+            height: 285px;
+            transform: translate(-50%, -50%) rotate(45deg);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+        }
+        .categories_content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            .category_subtitle {
+                text-transform: uppercase;
+                font-size: 18px;
+                letter-spacing: 3px;
+            }
+            .category_title {
+                color: #ffffff;
+                text-transform: uppercase;
+                font-size: 30px;
+            }
+        }
+        @include mobile {
+            .line_1 {
+                width: 250px;
+                height: 250px;
+            }
+            .line_2 {
+                width: 235px;
+                height: 235px;
+            }
+            .categories_content {
+                .category_subtitle {
+                    font-size: 12px;
+                }
+                .category_title {
+                    font-size: 16px;
+                }
+            }
+        }
+        @include smallMobile {
+            .line_1 {
+                width: 200px;
+                height: 200px;
+            }
+            .line_2 {
+                width: 185px;
+                height: 185px;
+            }
+        }
+        @include smallTablet {
+            .line_1 {
+                width: 200px;
+                height: 200px;
+            }
+            .line_2 {
+                width: 185px;
+                height: 185px;
+            }
+            .categories_content {
+                .category_subtitle {
+                    font-size: 12px;
+                }
+                .category_title {
+                    font-size: 16px;
+                }
+            }
+        }
+        @include largeTablet {
+            .line_1 {
+                width: 200px;
+                height: 200px;
+            }
+            .line_2 {
+                width: 185px;
+                height: 185px;
+            }
+            .categories_content {
+                .category_subtitle {
+                    font-size: 12px;
+                }
+                .category_title {
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+    @include mobile {
+        .categories_item {
+            height: 440px;
+        }
+    }
+}

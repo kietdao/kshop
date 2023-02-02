@@ -1,0 +1,33 @@
+.breadcrumbs {
+    width: 100%;
+    max-width: 1170px;
+    margin: 48px auto;
+    text-align: left;
+    color: #333333;
+    font-weight: 600;
+    .breadcrumb_item {
+        text-transform: capitalize;
+        font-size: 12px;
+        &:last-child {
+            color: $general-color;
+        }
+    }
+    .breadcrumb_arrow {
+        margin-left: 8px;
+        margin-right: 8px;
+        font-size: 12px;
+        letter-spacing: -4px;
+    }
+}
+@include mobile {
+    .breadcrumbs {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+@include tablet {
+    .breadcrumbs {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}

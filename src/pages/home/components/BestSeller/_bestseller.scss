@@ -1,0 +1,101 @@
+.bestseller {
+    padding: 100px 68px 0 68px;
+    .bestseller_intro {
+        text-align: left;
+        padding-right: 25px;
+        .bestseller_title {
+            text-transform: uppercase;
+            font-size: 30px;
+            font-weight: bold;
+            color: #333333;
+            margin: 0;
+        }
+        .bestseller_subtitle {
+            font-size: 14px;
+            font-style: italic;
+            color: $general-color;
+            margin: 0;
+        }
+        p {
+            font-size: 14px;
+            color: #333333;
+            margin-top: 28px;
+            text-align: justify;
+        }
+    }
+    .bestseller_product {
+        position: relative;
+        margin-bottom: 15px;
+        box-shadow: 0px 0px 5px #ccc;
+        cursor: pointer;
+        .product_img {
+            .ant-image {
+                img {
+                    width: 100%;
+                    height: 450px;
+                }
+            }
+        }
+        .product_info {
+            text-align: left;
+            margin-top: 24px;
+            padding: 8px;
+            .product_name {
+                margin: 0;
+                font-size: 14px;
+                font-weight: bold;
+                color: #333333;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            .product_price {
+                font-size: 18px;
+                font-weight: 600;
+                color: $general-color;
+            }
+            .product_rating {
+                .ant-rate {
+                    .ant-rate-star {
+                        div {
+                            font-size: 14px;
+                        }
+                    }
+                }
+            }
+        }
+        .product_action {
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin: 10px;
+            opacity: 0;
+            transition: opacity ease-in .2s;
+            .action_item {
+                padding: 12px 16px;
+                color: #ffffff;
+                background-color: $general-color;
+                margin-bottom: 10px;
+                cursor: pointer;
+                font-size: 18px;
+            }
+        }
+        &:hover {
+            .product_action {
+                opacity: 1;
+            }
+        }
+    }
+}
+@include mobile {
+    .bestseller {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+@include tablet {
+    .bestseller {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+}

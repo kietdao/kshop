@@ -1,0 +1,60 @@
+.slider {
+    .slider_list {
+        .slider_item {
+            position: relative;
+            .slider_item-bg {
+                width: 100%;
+                height: 800px;
+                max-height: 50vh;
+                background-color: #000000;
+            }
+            .slider_item-content {
+                position: absolute;
+                top: 30%;
+                left: 30%;
+                transform: translate(-30%, -30%);
+                width: 30%;
+                max-width: 600px;
+                text-align: left;
+                color: #eee;
+                .title {
+                    color: #eee;
+                    text-transform: uppercase;
+                    font-weight: 700;
+                    font-size: 48px;
+                    margin: 0;
+                    span {
+                        display: block;
+                        color: $general-color;
+                    }
+                }
+
+                .intro {
+
+                }
+                button {
+                    text-transform: uppercase;
+                    font-weight: 600;
+                    font-size: 12px;
+                }
+                @include tablet {
+                    .title {
+                        font-size: 36px;
+                    }
+                    .intro {
+                        font-size: 14px;
+                    }
+                }
+                @media (max-width: 914px) {
+                    .title {
+                        font-size: 18px;
+                    }
+                    .intro {
+                        font-size: 10px;
+                    }
+                }
+            }
+        }
+    }
+}
+

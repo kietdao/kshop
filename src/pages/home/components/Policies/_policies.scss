@@ -1,0 +1,26 @@
+.policies_list {
+    background-color: #f5f6f9;
+    padding: 50px 0;
+    margin-top: 60px;
+    .policies_item {
+        margin-bottom: 16px;
+        img {
+            height: 32px;
+        }
+        .policies_info {
+            margin-top: 15px;
+            .policies_title {
+                margin: 0;
+                font-size: 18px;
+                font-weight: bold;
+                text-transform: uppercase;
+            }
+            .policies_subtitle {
+                font-size: 14px;
+                font-weight: 600;
+                text-transform: capitalize;
+                color: #888888;
+            }
+        }
+    }
+}

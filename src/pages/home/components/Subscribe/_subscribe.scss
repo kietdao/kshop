@@ -1,0 +1,82 @@
+.subscribe {
+    .subscribe_content {
+        height: 300px;
+        background-color: #2b2f41;
+        color: #ffffff;
+        padding: 65px 175px;
+        .subscribe_title {
+            font-size: 30px;
+            color: #ffffff;
+            text-transform: capitalize;
+        }
+        p {
+            margin: 0;
+        }
+        span {
+
+        }
+        .subscribe_input {
+            display: flex;
+            gap: 10px;
+            margin: 35px 0;
+            input.ant-input {
+                height: 45px;
+                &:focus {
+                    border-color:$general-color;
+                }
+            }
+            button {
+                height: 45px;
+                text-transform: uppercase;
+                font-weight: 600;
+                &:hover, &:focus {
+                    color: $general-color;
+                    border-color: $general-color;
+                }
+            }
+        }
+    }
+    .clients_list {
+        display: flex;
+        align-items: center;
+        gap: 110px;
+        height: 300px;
+        background-color: #f5f6f9;
+        padding: 65px 65px;
+        .ant-image {
+            img {
+
+            }
+        }
+    }
+    @include mobile {
+        .subscribe_content {
+            height: unset;
+            padding: 30px;
+        }
+        .clients_list {
+            height: unset;
+            flex-direction: column;
+            gap: 30px;
+            padding: 10px;
+        }
+    }
+    @include tablet {
+        .subscribe_content {
+            padding: 30px
+        }
+        .clients_list {
+            gap: 10px;
+            padding: 10px;
+        }
+    }
+    @include largeTablet {
+        .subscribe_content {
+            padding: 30px
+        }
+        .clients_list {
+            gap: 10px;
+            padding: 10px;
+        }
+    }
+}

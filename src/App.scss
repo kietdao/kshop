@@ -1,0 +1,41 @@
+// general variables list
+// color
+$general-color: #3cb878;
+
+// Import lists .scss files
+.App {
+  position: relative;
+  text-align: center;
+}
+
+@import './Responsive';
+
+// Pages
+@import './pages/home/home';
+@import './pages/products/products';
+@import './pages/productdetail/productdetail';
+@import './pages/about/about';
+@import './pages/contact/contact';
+@import './pages/lookbook/lookbook';
+@import './pages/cart/cart';
+@import './pages/payment/payment';
+@import './pages/login/login';
+@import './pages/register/register';
+@import './pages/checkout/checkout';
+
+
+// Components
+@import './components/Header/header';
+@import './components/Slider/slider';
+@import './components/Sidebar/sidebar';
+@import './components/Brand/brand';
+@import './components/Footer/footer';
+@import './components/Breadcrumbs/breadcrumbs';
+@import './pages/home/components/BestSeller/bestseller';
+@import './pages/home/components/Policies/policies';
+@import './pages/home/components/Category/category';
+@import './pages/home/components/Feature/feature';
+@import './pages/home/components/Subscribe/subscribe';
+@import './pages/products/components/Sidebar/sidebar';
+
+
