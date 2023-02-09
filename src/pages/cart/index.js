@@ -123,7 +123,7 @@ export default function Cart() {
       dataIndex: '',
       render: ({ quantity, price }, index) => (
         <div className="total_cell">
-          <span className="product_total">${quantity*price}</span>
+          <span className="product_total">${Math.ceil(quantity*price)}</span>
           <i className="fa-regular fa-circle-xmark" onClick={() => dispatch(deleteItem(cart.indexOf(index)))}></i>
         </div>
       )

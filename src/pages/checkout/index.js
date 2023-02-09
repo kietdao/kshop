@@ -1,10 +1,11 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useLocation } from "react-router";
 import { Row, Col, Input, Select, Radio, Button, Checkbox } from "antd";
 import { Formik } from "formik";
 import * as Yup from "yup";
 
 export default function CheckOut() {
+  const [order, setOrder] = useState(null)
   const { state } = useLocation();
   const {
     productsList,
@@ -35,11 +36,19 @@ export default function CheckOut() {
     .required('Please enter your phone number'),
   });
   const handleSubmit = () => {
-    if(formInfo.current) {
-      console.log(formInfo.current.values)
-    }
-    if(formPayment.current) {
-      console.log(formPayment.current.values)
+    if(formInfo.current && formPayment.current) {
+      setOrder({
+        customer: formInfo.current.values,
+        paymentType: formPayment.current.values,
+        order: {
+          productsList,
+          totalPrice,
+          shipping,
+          coupon,
+          voucher,
+          totalCart
+        }
+      })
     }
   }
   return (
