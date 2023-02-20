@@ -100,8 +100,7 @@ export default function Header() {
       <div className="header_menu">
         <div className="header_menu-left">
           <Link to="/home" className="logo">
-            <span className="logo_highlight">renoshop</span>
-            bee
+            <span className="logo_highlight">kshop</span>
           </Link>
         </div>
         <div className="header_menu-center">

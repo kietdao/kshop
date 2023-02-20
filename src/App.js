@@ -51,8 +51,8 @@ function App() {
     <div className="App">
       <Header />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/home" element={<Home />} />
+        <Route path="*" element={<Home />} />
+        <Route exact path="/home" element={<Home />} />
         <Route
           path="/products/:typeProduct"
           element={
@@ -62,7 +62,7 @@ function App() {
             </Fragment>
           }
         />
-        <Route path="/lookbook" element={<Lookbook />} />
+        <Route exact path="/lookbook" element={<Lookbook />} />
         <Route
           path="/cart"
           element={
@@ -72,9 +72,10 @@ function App() {
             </Fragment>
           }
         />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
+        <Route exact path="/about" element={<About />} />
+        <Route exact path="/contact" element={<Contact />} />
         <Route 
+          exact 
           path="/checkout" 
           element={
             <Fragment>

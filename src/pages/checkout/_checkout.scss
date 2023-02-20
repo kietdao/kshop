@@ -62,6 +62,24 @@
             } 
         }
     }
+    .customer_info {
+        border: 1px solid #a3a2a3;
+        padding: 35px;
+        font-weight: 600;
+        .info_row {
+            display: flex;
+            align-items: center;
+            .row_title {
+                flex: 1;
+                text-align-last: right;
+                text-transform: capitalize;
+            }
+            .row_detail {
+                flex: 2;
+                text-align-last: center;
+            }
+        }
+    }
     .bill_table {
         .bill_container {
             border: 1px solid #a3a2a3;
