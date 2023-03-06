@@ -1,10 +1,11 @@
 import { useRef, useState } from "react";
-import { useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import { Row, Col, Input, Select, Radio, Button, Checkbox } from "antd";
 import { Formik } from "formik";
 import * as Yup from "yup";
 
 export default function CheckOut() {
+  const navigate = useNavigate()
   const [order, setOrder] = useState(null);
   const { state } = useLocation();
   const {
@@ -49,6 +50,10 @@ export default function CheckOut() {
       });
     }
   };
+  const handleOrderMore = () => {
+    setOrder(null)
+    navigate('/')
+  }
   return (
     <div className="checkout">
       {console.log(order)}
@@ -84,7 +89,7 @@ export default function CheckOut() {
               </div>
               <div className="info_row">
                 <span className="row_notification">
-                  if you have any question about our products. Please feel free to contact us through this email: Y<a href="mailto: kiet.dao3103@gmail.com" target="_blank">kiet.dao3103@gmail.com</a>
+                  if you have any question about our products. Please feel free to contact us through this email: <a href="mailto: kiet.dao3103@gmail.com" target="_blank">kiet.dao3103@gmail.com</a>
                 </span>  
               </div>
             </div>
@@ -280,7 +285,8 @@ export default function CheckOut() {
               </div>
             </div>
           </div>
-          <div className="payment_type">
+          {order ? '' : (
+            <div className="payment_type">
             <Formik
               initialValues={{
                 paymentType: "",
@@ -311,6 +317,7 @@ export default function CheckOut() {
               )}
             </Formik>
           </div>
+          )}
         </Col>
       </Row>
       <Row>
@@ -325,6 +332,9 @@ export default function CheckOut() {
         >
           <Button type="primary" onClick={handleSubmit} disabled={order ? true : false}>
             place order
+          </Button>
+          <Button type="primary" onClick={handleOrderMore} disabled={order ? false : true}>
+            order more
           </Button>
         </Col>
       </Row>

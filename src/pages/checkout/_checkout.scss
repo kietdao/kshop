@@ -69,6 +69,7 @@
         .info_row {
             display: flex;
             align-items: center;
+            margin-bottom: 15px;
             .row_title {
                 flex: 1;
                 text-align-last: right;
@@ -78,6 +79,18 @@
                 flex: 2;
                 text-align-last: center;
             }
+            .row_notification {
+                text-align: justify;
+                text-transform: capitalize;
+                a {
+                    text-transform: none;
+                }
+            }
+        }
+    }
+    @include mobile {
+        .customer_info {
+            padding: 5px;
         }
     }
     .bill_table {
@@ -229,7 +242,10 @@
         }
     }
     .place_order {
-        text-align: right;
+        display: flex;
+        justify-content: right;
+        gap: 15px;
+        flex-wrap: wrap;
         padding-top: 12px;
         padding-bottom: 12px;
         button {
