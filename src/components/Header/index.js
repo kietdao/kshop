@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { Dropdown, Menu, Space, Badge, Popover, Image } from "antd";
-import { Link } from "react-router-dom";
+import { Dropdown, Menu, Space, Badge, Popover, Image, Button } from "antd";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from 'react-redux'
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
@@ -8,6 +8,7 @@ import { v4 as uuidv4 } from "uuid";
 export default function Header() {
   const numberItems = useSelector(state => state.cart.numberItems)
   const cartItems = useSelector(state => state.cart.cart)
+  const navigate = useNavigate()
   console.log(cartItems)
   const [categories, setCategories] = useState([]);
   useEffect(() => {
@@ -77,6 +78,7 @@ export default function Header() {
           <span className="quantity">x {item.quantity}</span>
         </div>
       ))}
+      <Button onClick={() => navigate('/cart')} align={'right'}>view detail</Button>
     </div>
   )
   return (
