@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Dropdown, Menu, Space, Badge } from "antd";
+import { Dropdown, Menu, Space, Badge, Popover, Image } from "antd";
 import { Link } from "react-router-dom";
 import { useSelector } from 'react-redux'
 import axios from "axios";
@@ -7,6 +7,8 @@ import { v4 as uuidv4 } from "uuid";
 
 export default function Header() {
   const numberItems = useSelector(state => state.cart.numberItems)
+  const cartItems = useSelector(state => state.cart.cart)
+  console.log(cartItems)
   const [categories, setCategories] = useState([]);
   useEffect(() => {
     async function getCategories() {
@@ -65,7 +67,18 @@ export default function Header() {
       ]}
     />
   );
-
+  
+  const smallcart = (
+    <div className="smallcart">
+      {cartItems.map(item => (
+        <div className="item" key={uuidv4()}>
+          <Image src={item.image} width={50} alt={item.title} preview={false}/>
+          <h5 className="name">{item.title}</h5>
+          <span className="quantity">x {item.quantity}</span>
+        </div>
+      ))}
+    </div>
+  )
   return (
     <header className="header">
       <div className="header_top">
@@ -119,9 +132,11 @@ export default function Header() {
         <div className="header_menu-right">
           <div className="cart_action action_icons">
             <Link to="/cart">
-              <Badge count={numberItems} color={"#3cb878"} size={"small"}>
-                <i className="fa-solid fa-cart-shopping"></i>
-              </Badge>
+              <Popover content={smallcart} placement={'bottom'}>
+                <Badge count={numberItems} color={"#3cb878"} size={"small"}>
+                  <i className="fa-solid fa-cart-shopping"></i>
+                </Badge>
+              </Popover>
             </Link>
           </div>
           <div className="search_action action_icons">

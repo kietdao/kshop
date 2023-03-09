@@ -88,6 +88,9 @@
                     cursor: pointer;
                 }
             }
+            .cart_action {
+                
+            }
         }
         .header_menu-mobile {
             display: none;
@@ -189,3 +192,27 @@
         }
     }
 }
+
+.ant-popover{
+    .smallcart {
+        .item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            .name {
+                margin: 0;
+                padding: 0 8px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            .quantity {
+
+            }
+            .total {
+
+            }
+        }
+    }
+} 
