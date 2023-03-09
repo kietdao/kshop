@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { Dropdown, Menu, Space, Badge, Popover, Image, Button } from "antd";
+import { Fragment, useEffect, useState } from "react";
+import { Dropdown, Menu, Space, Badge, Popover, Image, Button, Empty } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from 'react-redux'
 import axios from "axios";
@@ -71,14 +71,16 @@ export default function Header() {
   
   const smallcart = (
     <div className="smallcart">
-      {cartItems.map(item => (
-        <div className="item" key={uuidv4()}>
-          <Image src={item.image} width={50} alt={item.title} preview={false}/>
-          <h5 className="name">{item.title}</h5>
-          <span className="quantity">x {item.quantity}</span>
-        </div>
-      ))}
-      <Button onClick={() => navigate('/cart')} align={'right'}>view detail</Button>
+      {cartItems.length !== 0 ? cartItems.map(item => (
+          <div className="item" key={uuidv4()}>
+            <Image src={item.image} width={50} alt={item.title} preview={false}/>
+            <h5 className="name">{item.title}</h5>
+            <span className="quantity">x {item.quantity}</span>
+          </div>
+      )) : (
+        <Empty description={'No item into cart'}/>
+      )}
+      {cartItems.length !== 0 && <Button onClick={() => navigate('/cart')} align={'right'}>view detail</Button>  }
     </div>
   )
   return (
