@@ -17,12 +17,13 @@ import About from "./pages/about";
 import Contact from "./pages/contact";
 import CheckOut from './pages/checkout';
 import Breadcrumbs from "./components/Breadcrumbs";
+import WagmiTest from "./pages/wagmitest";
+import ProductDetail from "./pages/productdetail";
 
 function App() {
   const dispatch = useDispatch();
   const warnMsg = useSelector(state => state?.cart.warnMsg)
   const succMsg = useSelector(state => state?.cart.succMsg)
-  const { typeProduct } = useParams();
   useEffect(() => {
     async function getProductData() {
       try {
@@ -62,6 +63,15 @@ function App() {
             </Fragment>
           }
         />
+        <Route
+          path="/product/:id"
+          element={
+            <Fragment>
+              <Breadcrumbs />
+              <ProductDetail />
+            </Fragment>
+          }
+        />
         <Route exact path="/lookbook" element={<Lookbook />} />
         <Route
           path="/cart"
@@ -72,6 +82,7 @@ function App() {
             </Fragment>
           }
         />
+        <Route exact path="/wagmi" element={<WagmiTest />} />
         <Route exact path="/about" element={<About />} />
         <Route exact path="/contact" element={<Contact />} />
         <Route 

@@ -10,7 +10,6 @@ import Subscribe from './components/Subscribe'
 export default function Home() {
   return (
     <div className='home_page'>
-      abcbcbccdefghijk
       <Slider />
       <BestSeller />
       <Policies />

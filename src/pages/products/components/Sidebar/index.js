@@ -4,48 +4,53 @@ import { Link } from 'react-router-dom'
 import { Col, InputNumber, Row, Slider, Image } from 'antd';
 import axios from 'axios'
 import { v4 as uuidv4 } from 'uuid';
+import { useQuery } from 'react-query'
 
 function Sidebar(props) {
-  const [categories, setCategories] = useState([])
-  const [inputValueLow, setInputValueLow] = useState(10);
+  const [inputValueLow, setInputValueLow] = useState(0);
   const [inputValueHigh, setInputValueHigh] = useState(500);
-  const [topRatedProducts, setTopRatedProducts] = useState([])
-  const [lowestPrice, setLowestPrice] = useState(0)
-  const [highestPrice, setHighestPrice] = useState(0)
-  useEffect(() => {
-    async function getCategories() {
+  const [topProducts, setTopProducts] = useState([])
+  const [lowestPrice, setLowestPrice] = useState(inputValueLow)
+  const [highestPrice, setHighestPrice] = useState(inputValueHigh)
+  const { data: categoriesList } = useQuery({
+    queryKey: ['categoriesSidebar'],
+    queryFn: async () => {
       try {
         const res = await axios.get('https://fakestoreapi.com/products/categories')
-        setCategories([...res?.data])
+        return res.data
       } catch(err) {
         console.log(err)
       }
     }
-    getCategories()
-  },[])
-  useEffect(() => {
-    async function getTopRatedProduct() {
+  })
+  const { data: productsSidebar } = useQuery({
+    queryKey: ['topProducts'],
+    queryFn: async () => {
       try {
         const res = await axios.get('https://fakestoreapi.com/products')
-        const topProducts = []
-        res?.data.forEach(item => {
-          if(item.rating.rate > 4.5) {
-            topProducts.push(item)
-          }
-        })
-        const topProductList = topProducts.sort((a, b) => b.rating.rate-a.rating.rate).splice(0, 3)
-        setTopRatedProducts([...topProductList])
-        const priceList = res?.data.map(item => {
-          return item.price
-        })
-        setHighestPrice(Math.max(...priceList))
-        setLowestPrice(Math.min(...priceList))
+        return res.data
       } catch(err) {
         console.log(err)
       }
     }
-    getTopRatedProduct()
-  },[])
+  })
+  useEffect(() => {
+    const topProducts = []
+    productsSidebar?.forEach(item => {
+      if(item.rating.rate > 4.5) {
+        topProducts.push(item)
+      }
+    })
+    const topProductList = topProducts?.sort((a, b) => b.rating.rate-a.rating.rate).splice(0, 3)
+    setTopProducts([...topProductList])
+  }, [productsSidebar])
+  useEffect(() => {
+    const priceList = productsSidebar?.map(item => {
+      return item.price
+    })
+    setHighestPrice(Math.max(...priceList || []))
+    setLowestPrice(Math.min(...priceList || []))
+  }, [productsSidebar])
   const onChangeLow = (value) => {
     if (isNaN(value)) {
       return;
@@ -80,7 +85,7 @@ function Sidebar(props) {
       <div className='categories_list'>
         <h2>categories</h2>
         <ul>
-            {categories && categories.map((category) => {
+            {categoriesList?.map((category) => {
               return(
                 <li key={uuidv4()}><Link to={{pathname: `/products/${category}`}}>{category}</Link></li>
               )
@@ -132,7 +137,7 @@ function Sidebar(props) {
       <hr />
       <div className='top_rated'>
         <h2>top rated</h2> 
-          {topRatedProducts && topRatedProducts.map(item => {
+          {topProducts?.map(item => {
             return (
               <div className='top_rated_item' key={uuidv4()}>
                 <Image src={item.image} alt={item.title} preview={false} placeholder={true}/>

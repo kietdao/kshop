@@ -7,13 +7,25 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { QueryClient, QueryClientProvider } from 'react-query'
 
-
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      cacheTime: Infinity,
+      refetchInterval: false,
+      refetchOnWindowFocus: false,
+      staleTime: 60 * 60 * 1000,
+    }
+  },
+})
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
     <BrowserRouter>
+    <QueryClientProvider client={queryClient}>
       <App />
+    </QueryClientProvider>
     </BrowserRouter>
   </Provider>
 );

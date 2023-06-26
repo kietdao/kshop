@@ -131,6 +131,7 @@ export default function Header() {
                   </Link>
                 );
               })}
+             <Link to='/wagmi'>wagmi</Link> 
           </div>
         </div>
         <div className="header_menu-right">

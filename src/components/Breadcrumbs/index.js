@@ -2,6 +2,7 @@ import { useLocation } from 'react-router-dom'
 
 export default function Breadcrumbs() {
   const location = useLocation()
+  console.log(location.pathname)
   return (
     <div className='breadcrumbs'>
         <span className='breadcrumb_item'>home</span>

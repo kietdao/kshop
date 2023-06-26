@@ -3,37 +3,46 @@ import { useDispatch } from 'react-redux'
 import { addToCart } from '../../features/cart/cartSlice'
 import { useParams } from "react-router-dom";
 import { Row, Col, Image, Rate, List } from "antd";
+import { useNavigate } from "react-router";
 import axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 import Sidebar from "./components/Sidebar";
+import { useQuery, useQueryClient } from "react-query";
 
 function ProductList() {
   const { typeProduct } = useParams();
   const dispatch = useDispatch()
-  const [products, setProducts] = useState([]);
   const [productsFilteredPrice, setProductsFilteredPrice] = useState([])
   const [isLoading, setIsLoading] = useState(true)
-  useEffect(() => {
-    async function getProductsWithCategory() {
-      try {
-        const res = await axios.get(
-          `https://fakestoreapi.com/products/category/${typeProduct}` 
-        );
-        setIsLoading(true)
-        setProductsFilteredPrice([])
-        setProducts([...res.data])
-        setIsLoading(false)
-      } catch (err) {
-        console.log(err);
-      }
+  const navigate = useNavigate()
+  const getProductsWithCategory = async (type) => {
+    try {
+      setIsLoading(true)
+      const res = await axios.get(
+        `https://fakestoreapi.com/products/category/${type}` 
+      );
+      return res.data
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setIsLoading(false)
     }
-    getProductsWithCategory();
-  }, [typeProduct]);
+  }
+  const { data: productList, isLoading: isProductLoading, isFetching, isError } = useQuery(
+    ['productList', typeProduct],
+    () => getProductsWithCategory(typeProduct),
+  )
+  useEffect(() => {
+    setProductsFilteredPrice([])
+  }, [productList])
+  const handleClickProduct = (id) => {
+    navigate(`/product/${id}`)
+  }
   return (
     <div className="products">
       <Row gutter={30}>
         <Col xs={24} sm={24} md={6} lg={6} xl={6} xxl={6}>
-          <Sidebar products={products} setProductsFilteredPrice={setProductsFilteredPrice} setIsLoading={setIsLoading}/>
+          <Sidebar products={productList && productList} setProductsFilteredPrice={setProductsFilteredPrice} setIsLoading={setIsLoading}/>
         </Col>
         <Col xs={24} sm={24} md={18} lg={18} xl={18} xxl={18}>
           <div className="product_list">
@@ -48,11 +57,11 @@ function ProductList() {
                   )
                 }
               }}
-              dataSource={productsFilteredPrice.length === 0 ? products : productsFilteredPrice}
-              loading={isLoading}
+              dataSource={productsFilteredPrice.length === 0 ? productList : productsFilteredPrice}
+              loading={isProductLoading || isLoading}
               renderItem={(item) => (
                 <List.Item>
-                  <div className="product_item">
+                  <div className="product_item" onClick={() => handleClickProduct(item.id)}>
                     <div className="product_img">
                       <Image
                         src={item?.image}
