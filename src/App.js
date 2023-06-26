@@ -52,7 +52,7 @@ function App() {
     <div className="App">
       <Header />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="*" element={<Home />} />
         <Route exact path="/home" element={<Home />} />
         <Route
           path="/products/:typeProduct"
