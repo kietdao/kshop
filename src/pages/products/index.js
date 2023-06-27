@@ -13,7 +13,7 @@ function ProductList() {
   const { typeProduct } = useParams();
   const dispatch = useDispatch()
   const [productsFilteredPrice, setProductsFilteredPrice] = useState([])
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(false)
   const navigate = useNavigate()
   const getProductsWithCategory = async (type) => {
     try {
@@ -28,7 +28,7 @@ function ProductList() {
       setIsLoading(false)
     }
   }
-  const { data: productList, isLoading: isProductLoading, isFetching, isError } = useQuery(
+  const { data: productList, isLoading: isProductLoading } = useQuery(
     ['productList', typeProduct],
     () => getProductsWithCategory(typeProduct),
   )
@@ -61,7 +61,7 @@ function ProductList() {
               loading={isProductLoading || isLoading}
               renderItem={(item) => (
                 <List.Item>
-                  <div className="product_item" onClick={() => handleClickProduct(item.id)}>
+                  <div className="product_item">
                     <div className="product_img">
                       <Image
                         src={item?.image}
@@ -69,7 +69,7 @@ function ProductList() {
                         placeholder={true}
                       />
                     </div>
-                    <div className="product_info">
+                    <div className="product_info" onClick={() => handleClickProduct(item.id)}>
                       <h4 className="product_name">{item?.title}</h4>
                       <span className="product_price">{`$` + item?.price}</span>
                       <div className="product_rating">

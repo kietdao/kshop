@@ -1,11 +1,16 @@
 // general variables list
 // color
-$general-color: #3cb878;
+// $general-color: #3cb878;
+$general-color: #ffc300;
 
 // Import lists .scss files
 .App {
   position: relative;
   text-align: center;
+}
+
+.ant-spin-dot-item {
+  background-color: $general-color !important;
 }
 
 @import './Responsive';
