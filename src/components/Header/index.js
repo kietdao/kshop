@@ -138,7 +138,7 @@ export default function Header() {
           <div className="cart_action action_icons">
             <Link to="/cart">
               <Popover content={smallcart} placement={'bottom'}>
-                <Badge count={numberItems} color={"#3cb878"} size={"small"}>
+                <Badge count={numberItems} color={"#ffc300"} size={"small"}>
                   <i className="fa-solid fa-cart-shopping"></i>
                 </Badge>
               </Popover>

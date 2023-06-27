@@ -87,11 +87,11 @@ export default function () {
             </Col>
             <Col xs={24} sm={24} md={12} lg={12} xl={12} xxl={12}>
               <div className='cards_list'>
-                <img src='visa_card.png' alt='visa'/>
-                <img src='paypal_card.png' alt='paypal'/>
-                <img src='amazon_card.png' alt='amazon'/>
-                <img src='maestro_card.png' alt='maestro'/>
-                <img src='amex_card.png' alt='amex'/> 
+                <img src='./static/images/visa_card.png' alt='visa'/>
+                <img src='./static/images/paypal_card.png' alt='paypal'/>
+                <img src='./static/images/amazon_card.png' alt='amazon'/>
+                <img src='./static/images/maestro_card.png' alt='maestro'/>
+                <img src='./static/images/amex_card.png' alt='amex'/> 
               </div>
             </Col>
           </Row>
