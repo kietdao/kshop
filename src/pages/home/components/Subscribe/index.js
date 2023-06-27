@@ -29,10 +29,10 @@ export default function Subscribe() {
             </Col>
             <Col xs={24} sm={24} md={12} lg={12} xl={12} xxl={12}>
                 <div className='clients_list'>
-                    <Image src='./logo_brand_1.png' preview={false} placeholder={true}/>
-                    <Image src='./logo_brand_2.png' preview={false} placeholder={true}/>
-                    <Image src='./logo_brand_3.png' preview={false} placeholder={true}/>
-                    <Image src='./logo_brand_4.png' preview={false} placeholder={true}/>
+                    <Image src='./static/images/logo_brand_1.png' preview={false} placeholder={true}/>
+                    <Image src='./static/images/logo_brand_2.png' preview={false} placeholder={true}/>
+                    <Image src='./static/images/logo_brand_3.png' preview={false} placeholder={true}/>
+                    <Image src='./static/images/logo_brand_4.png' preview={false} placeholder={true}/>
                 </div>
             </Col>
         </Row>

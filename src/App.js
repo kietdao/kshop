@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Routes, Route, useParams } from "react-router-dom";
 import { getProductList } from "./features/products/productsSlice";
 import axios from "axios";
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
 import { message } from 'antd'
 import "antd/dist/antd.css";
 import Header from "./components/Header";

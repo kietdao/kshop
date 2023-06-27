@@ -2,11 +2,16 @@ import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { addToCart } from '../../../../features/cart/cartSlice'
 import { Row, Col, Image, Rate } from 'antd'
+import { useNavigate } from 'react-router'
 
 export default function FeatureProduct() {
   const products = useSelector(state => state?.products?.products)
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const featuredProduct = products.filter(product => product.rating.rate > 3.6)
+  const handleClickProduct = (id) => {
+    navigate(`/product/${id}`);
+  };
   return (
     <div className='feature_products'>
         <div className='feature_title'>
@@ -21,7 +26,7 @@ export default function FeatureProduct() {
                         <div className='product_img'>
                           <Image src={item?.image} preview={false} placeholder={true}/>
                         </div>
-                        <div className='product_info'>
+                        <div className='product_info' onClick={() => handleClickProduct(item.id)}>
                           <h4 className='product_name'>{item?.title}</h4>
                           <span className='product_price'>{`$`+item?.price}</span>
                           <div className='product_rating'>
