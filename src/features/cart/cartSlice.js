@@ -35,10 +35,15 @@ export const cartSlice = createSlice({
             newCartList[actions.payload.itemId].quantity = actions.payload.newQuantity
             cartItems.splice(actions.payload.itemId, 1, newCartList[actions.payload.itemId])
             state.cart = [...cartItems]
+        },
+        resetCart: (state, actions) => {
+            const emptyCart = []
+            state.cart = emptyCart
+            state.numberItems = null
         }
     }
 })
 
-export const { addToCart, deleteItem, editQuantity } = cartSlice.actions
+export const { addToCart, deleteItem, editQuantity, resetCart } = cartSlice.actions
 
 export default cartSlice.reducer

@@ -1,11 +1,14 @@
 import { useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
+import { useDispatch } from "react-redux";
+import { resetCart } from "../../features/cart/cartSlice";
 import { Row, Col, Input, Select, Radio, Button, Checkbox } from "antd";
 import { Formik } from "formik";
 import * as Yup from "yup";
 
 export default function CheckOut() {
   const navigate = useNavigate()
+  const dispatch = useDispatch()
   const [order, setOrder] = useState(null);
   const { state } = useLocation();
   const {
@@ -51,12 +54,12 @@ export default function CheckOut() {
     }
   };
   const handleOrderMore = () => {
+    dispatch(resetCart())
     setOrder(null)
     navigate('/')
   }
   return (
     <div className="checkout">
-      {console.log(order)}
       <Row gutter={{ md: 32, lg: 32, xl: 32, xxl: 32 }}>
         {order ? (
           <Col xs={24} sm={24} md={15} lg={15} xl={15} xxl={15}>
@@ -334,7 +337,7 @@ export default function CheckOut() {
             place order
           </Button>
           <Button type="primary" onClick={handleOrderMore} disabled={order ? false : true}>
-            order more
+            continue shopping
           </Button>
         </Col>
       </Row>

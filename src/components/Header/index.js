@@ -9,7 +9,6 @@ export default function Header() {
   const numberItems = useSelector(state => state.cart.numberItems)
   const cartItems = useSelector(state => state.cart.cart)
   const navigate = useNavigate()
-  console.log(cartItems)
   const [categories, setCategories] = useState([]);
   useEffect(() => {
     async function getCategories() {

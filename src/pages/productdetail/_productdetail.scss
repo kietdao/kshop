@@ -1,0 +1,47 @@
+.product_detail {
+    width: 100%;
+    max-width: 1170px;
+    margin: 54px auto 78px;
+    .product_img {
+        width: 100%;
+        max-width: 450px;
+        max-height: 600px;
+        .slick-slider {
+            .slick-arrow {
+
+            }
+            .slick-list {
+
+            }
+            .slick-dots {
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+                li {
+                 a {
+                     img {
+                         width: 90px;
+                         height: 110px;
+                     }
+                 }
+                }
+            }
+        }
+    }
+    .product_info {
+
+    }
+    .product_tabs {
+
+    }
+    .product_tabs_content {
+        .description {
+
+        }
+        .reviews {
+            
+        }
+    }
+}

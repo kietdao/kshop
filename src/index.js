@@ -9,7 +9,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { QueryClient, QueryClientProvider } from 'react-query'
 
-const queryClient = new QueryClient({
+const kshopClient = new QueryClient({
   defaultOptions: {
     queries: {
       cacheTime: Infinity,
@@ -23,7 +23,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
     <BrowserRouter basename='/kshop'>
-    <QueryClientProvider client={queryClient}>
+    <QueryClientProvider client={kshopClient}>
       <App />
     </QueryClientProvider>
     </BrowserRouter>
